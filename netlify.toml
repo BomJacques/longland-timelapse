@@ -1,0 +1,16 @@
+[build]
+  command = "npm run build"
+  publish = "dist/client"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "no-referrer"
+    Permissions-Policy = "microphone=(self), screen-wake-lock=(self)"
+
+[[headers]]
+  for = "/audio-worklet.js"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"
+    Content-Type = "application/javascript; charset=utf-8"

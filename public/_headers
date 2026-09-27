@@ -1,0 +1,8 @@
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: no-referrer
+  Permissions-Policy: microphone=(self), screen-wake-lock=(self)
+
+/audio-worklet.js
+  Cache-Control: public, max-age=3600
+  Content-Type: application/javascript; charset=utf-8

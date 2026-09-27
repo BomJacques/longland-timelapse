@@ -1,0 +1,75 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+@theme inline {
+  --color-background: var(--background); --color-foreground: var(--foreground);
+  --color-card: var(--card); --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--card); --color-popover-foreground: var(--foreground);
+  --color-primary: var(--foreground); --color-primary-foreground: var(--background);
+  --color-secondary: var(--muted); --color-secondary-foreground: var(--foreground);
+  --color-muted: var(--muted); --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--muted); --color-accent-foreground: var(--foreground);
+  --color-destructive: var(--destructive); --color-border: var(--border);
+  --color-input: var(--border); --color-ring: var(--signal); --color-signal: var(--signal); --color-ink: var(--ink);
+  --radius-sm: .4rem; --radius-md: .65rem; --radius-lg: .9rem; --radius-xl: 1.15rem;
+  --font-sans: var(--font-geist-sans); --font-mono: var(--font-geist-mono);
+}
+
+:root { --background: #f5f5f1; --foreground: #171815; --card: #ffffff; --card-foreground: #171815; --muted: #ecece6; --muted-foreground: #696b63; --border: #dcdcd4; --signal: #b9f227; --ink: #171815; --destructive: #bd302c; }
+.dark { --background: #151613; --foreground: #f4f5ef; --card: #20211d; --card-foreground: #f4f5ef; --muted: #292a25; --muted-foreground: #adafa4; --border: #383a33; --signal: #b9f227; --ink: #11120f; --destructive: #f2655d; }
+@layer base { * { @apply border-border outline-ring/50; } html { @apply font-sans; } body { @apply bg-background text-foreground; } button, input, select { font-size: 16px; } }
+
+.panel { @apply rounded-xl border border-border bg-card shadow-[0_1px_0_rgb(0_0_0/.04)]; }
+.eyebrow { @apply text-[.72rem] font-bold tracking-[.16em] text-muted-foreground; }
+.status-pill { @apply flex min-h-11 items-center gap-2 rounded-full border border-border bg-card px-4 text-sm font-medium; }
+.status-pill i { @apply size-2 rounded-full bg-signal shadow-[0_0_0_4px_rgb(185_242_39/.16)]; }
+.status-pill.is-live i { background: #ff574d; box-shadow: 0 0 0 4px rgb(255 87 77 / .16); }
+.setting-row { @apply grid min-h-24 grid-cols-[1fr_auto] items-center gap-5 border-b border-border py-4; }
+.setting-row label { @apply text-lg font-semibold tracking-[-.02em]; }
+.setting-row p { @apply mt-1 text-sm text-muted-foreground; }
+.input-unit { @apply flex items-center gap-2; }
+.input-unit input { @apply h-12 w-24 text-right font-mono text-lg; }
+.input-unit span { @apply w-16 text-sm text-muted-foreground; }
+.timeline-preview { @apply flex h-8 items-end gap-1; }
+.timeline-preview i { @apply min-w-0 flex-1 rounded-full bg-white/10; height: 20%; }
+.timeline-preview i.active { @apply bg-signal; height: 100%; }
+.sticky-action { @apply fixed inset-x-0 bottom-0 z-20 mx-auto flex max-w-2xl gap-3 border-t border-border bg-background/95 px-4 pb-[max(1rem,env(safe-area-inset-bottom))] pt-3 backdrop-blur sm:bottom-5 sm:rounded-2xl sm:border sm:p-3 sm:shadow-xl; }
+.notice { @apply mb-4 flex items-start gap-3 rounded-xl border border-[#d9c66d] bg-[#fff7c8] p-4 text-sm text-[#4c421c]; }
+.notice > svg { @apply mt-0.5 size-5 shrink-0; }
+.notice.danger { @apply border-[#e7aaa5] bg-[#fff0ef] text-[#7b2521]; }
+.recovery-card { @apply mb-5 flex flex-col justify-between gap-5 rounded-xl border border-[#a8cc4e] bg-[#efffc7] p-5 sm:flex-row sm:items-center; }
+.recovery-card h2 { @apply mt-1 text-xl font-semibold; }
+.recovery-card p:last-child { @apply mt-1 text-sm text-[#536124]; }
+.validation { @apply mt-2 flex items-center gap-2 rounded-lg bg-[#fff0ef] p-3 text-sm font-medium text-[#8c2d29]; }
+.validation svg { @apply size-4; }
+.check-label { @apply flex min-h-11 items-center gap-3 rounded-lg px-2 text-sm font-medium; }
+.field-label { @apply block text-sm font-semibold; }
+.field-label small { @apply mt-2 block text-xs font-normal leading-relaxed text-muted-foreground; }
+.field-help { @apply mt-2 block text-xs font-normal leading-relaxed text-muted-foreground; }
+.device-readout { @apply mt-2 flex h-12 items-center gap-3 rounded-lg border border-border bg-background px-3 text-sm font-normal; }
+.device-readout i { @apply size-2 rounded-full bg-muted-foreground; }
+.device-readout i.live { @apply bg-signal shadow-[0_0_0_4px_rgb(185_242_39/.2)]; }
+.meter { @apply h-4 w-full overflow-hidden rounded-full bg-muted; }
+.meter i { @apply block h-full w-full origin-left rounded-full bg-foreground transition-transform duration-75; }
+.meter.dark { @apply bg-white/10; }
+.meter.dark i { @apply bg-signal; }
+.settings-grid { @apply grid gap-4 pb-3 sm:grid-cols-2; }
+.debug-note { @apply rounded-lg border border-dashed border-[#8f5ace] bg-[#f5ebff] p-3 text-sm text-[#5e2b91]; }
+.active-console { @apply rounded-[1.25rem] bg-ink p-5 text-white shadow-[0_24px_80px_rgb(0_0_0/.16)] sm:p-8; }
+.live-header { @apply mb-8 flex items-center gap-4; }
+.live-header h2 { @apply mt-1 text-2xl font-semibold tracking-[-.04em] sm:text-3xl; }
+.live-orb { @apply size-12 shrink-0 rounded-full border-[12px] border-white/10 bg-white/30; }
+.live-orb.pulse { border-color: rgb(255 87 77 / .2); background: #ff574d; animation: pulse-live 1.4s ease-in-out infinite; }
+.active-metrics { @apply mt-8 grid grid-cols-2 gap-y-8 sm:grid-cols-4; }
+.complete-card { @apply mx-auto max-w-2xl rounded-[1.25rem] border border-border bg-card p-6 text-center shadow-[0_24px_70px_rgb(0_0_0/.08)] sm:p-10; }
+.complete-icon { @apply mx-auto mb-5 flex size-16 items-center justify-center rounded-full bg-signal text-ink; }
+.complete-icon svg { @apply size-7; }
+.complete-card h2 { @apply mt-2 text-3xl font-semibold tracking-[-.05em]; }
+.complete-stats { @apply mt-8 grid grid-cols-3 gap-3 rounded-xl bg-background p-5 text-left; }
+.save-link { @apply inline-flex h-14 items-center justify-center gap-2 rounded-lg border border-border bg-background px-4 text-sm font-medium transition-colors hover:bg-muted; }
+.save-link svg { @apply size-4; }
+.log { @apply max-h-64 overflow-auto rounded-lg bg-ink p-4 font-mono text-xs leading-6 text-white/65; }
+@keyframes pulse-live { 50% { box-shadow: 0 0 0 12px rgb(255 87 77 / 0); } }
+@media (max-width: 520px) { .setting-row { @apply grid-cols-1 gap-2; } .setting-row > :last-child { @apply justify-self-stretch; } .input-unit input { @apply flex-1; } }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; } }

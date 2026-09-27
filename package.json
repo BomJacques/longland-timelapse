@@ -10,7 +10,7 @@
     "prebuild": "node scripts/prepare-audio.mjs",
     "dev": "vinext dev",
     "build": "node scripts/build.mjs",
-    "start": "wrangler dev --config dist/server/wrangler.json",
+    "start": "vinext start",
     "test": "node --test tests/*.test.ts tests/*.test.mjs",
     "lint": "oxlint",
     "format": "oxfmt"
